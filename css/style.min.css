@@ -757,7 +757,7 @@ img.svg {
 
 .arlo_tm_about_wrap .leftbox .about_image_wrap .image .inner {
   position: absolute;
-  top: 0px;
+  top: -50px;
   bottom: 0px;
   left: 0px;
   right: 0px;
