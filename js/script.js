@@ -6,11 +6,20 @@ const root = document.documentElement;
 
 function applyTheme(theme) {
   root.setAttribute('data-theme', theme);
-  const icon = window.FontAwesome.icon({
-    prefix: theme === 'dark' ? 'fas' : 'far',
-    iconName: 'moon'
-  });
-  toggle.innerHTML = icon.html.join('');
+  // Guard: FontAwesome may not be loaded yet (e.g. network error)
+  if (window.FontAwesome) {
+    const icon = window.FontAwesome.icon({
+      prefix: theme === 'dark' ? 'fas' : 'far',
+      iconName: 'moon'
+    });
+    if (icon) toggle.innerHTML = icon.html.join('');
+  } else {
+    // Fallback: swap the class on the existing <i> tag
+    const i = toggle.querySelector('i');
+    if (i) {
+      i.className = theme === 'dark' ? 'fas fa-moon' : 'far fa-moon';
+    }
+  }
   try { localStorage.setItem('portfolio-theme', theme); } catch(e) {}
 }
 
@@ -22,6 +31,36 @@ toggle.addEventListener('click', () => {
   const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   applyTheme(next);
 });
+
+// ── Hamburger Menu ──
+const hamburger = document.getElementById('nav-hamburger');
+const navLinks  = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('is-open');
+    hamburger.classList.toggle('is-open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when a nav link is clicked (smooth scroll)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      hamburger.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      navLinks.classList.remove('is-open');
+      hamburger.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 // ── Auto-number project cards ──
 // Numbers are generated here so they never get out of sync with the HTML order.
@@ -38,7 +77,8 @@ window.addEventListener('scroll', () => {
 // ── Project details modal (for project-card--no-link cards) ──
 const projectDetailsModal = $('#projectDetailsModal');
 
-document.querySelectorAll('#project-list .project-card--no-link').forEach(card => {
+// Skip cards marked as no-gallery (no screenshots to show)
+document.querySelectorAll('#project-list .project-card--no-link:not(.project-card--no-gallery)').forEach(card => {
   card.setAttribute('aria-haspopup', 'dialog');
   card.setAttribute('role', 'button');
   card.tabIndex = 0;

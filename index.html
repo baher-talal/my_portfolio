@@ -12,12 +12,12 @@
   <meta property="og:description"
     content="Frontend Developer with 3+ years experience building responsive web apps in Vue.js, Laravel & JavaScript. Based in Cairo, Egypt.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bahertalal.netlify.app">
-  <meta property="og:image" content="https://bahertalal.netlify.app/img/me5.JPG">
+  <meta property="og:url" content="https://baher-talal.vercel.app">
+  <meta property="og:image" content="https://baher-talal.vercel.app/img/me5.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Baher Talal — Frontend Developer">
   <meta name="twitter:description" content="Frontend Developer based in Cairo. Vue.js, Laravel, JavaScript.">
-  <meta name="twitter:image" content="https://bahertalal.netlify.app/img/me5.JPG">
+  <meta name="twitter:image" content="https://baher-talal.vercel.app/img/me5.webp">
   <title>Baher Talal—Frontend Developer</title>
   <link type="text/css" rel="stylesheet" href="css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,10 @@
 
   <nav>
     <a class="nav-logo" href="#hero"><img src="img/favicon.png" alt="Baher Logo"></a>
-    <ul class="nav-links">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -65,7 +68,10 @@
 
     <div class="hero-inner">
       <div class="hero-photo">
-        <img src="img/me5.JPG" alt="Baher Talal">
+        <picture>
+          <source srcset="img/me5.webp" type="image/webp">
+          <img src="img/me5.webp" alt="Baher Talal">
+        </picture>
       </div>
       <div class="hero-content">
         <p class="hero-sub">
@@ -143,6 +149,7 @@
           <span class="skill-tag"><i class="fab fa-js"></i> jQuery</span>
           <span class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
           <span class="skill-tag"><i class="fab fa-vuejs"></i> Vuex</span>
+          <span class="skill-tag"><i class="fab fa-vuejs"></i> Pinia</span>
           <span class="skill-tag">Webpack</span>
         </div>
       </div>
@@ -320,8 +327,7 @@
         <span class="project-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
       </a>
 
-      <a class="project-card project-card--no-link"
-        data-gallery="images/projects/freelance-client-work/1.jpg,images/projects/freelance-client-work/2.jpg,images/projects/freelance-client-work/3.jpg">
+      <a class="project-card project-card--no-link project-card--no-gallery">
         <p class="project-number"></p>
         <h3 class="project-title">Freelance Client Work</h3>
         <p class="project-desc">A mix of landing pages, admin dashboards, and content-managed sites delivered for independent clients since 2021. Each project handled solo — from scoping and design to development, testing, and deployment.</p>
@@ -337,7 +343,7 @@
 
 <!-- 
       <a class="project-card project-card--no-link"
-        data-gallery="img/me5.JPG,images/projects/body-talk/2.jpg,images/projects/body-talk/3.jpg">
+        data-gallery="img/me5.webp,images/projects/body-talk/2.jpg,images/projects/body-talk/3.jpg">
         <p class="project-number">07</p>
         <h3 class="project-title">Body Talk</h3>
         <p class="project-desc">Bilingual web app (Arabic + English) teaching body language, pet communication, and
@@ -603,9 +609,10 @@
           <p class="exp-company">Nile RCC, Cairo</p>
         </div>
         <div>
-          <h3 class="exp-role">IT Help Desk</h3>
-          <p class="exp-body">Providing technical support and infrastructure maintenance while continuing freelance
-            frontend projects in parallel — keeping both skills active and current.</p>
+          <h3 class="exp-role">IT Help Desk <span class="exp-role-tag">+ Freelance</span></h3>
+          <p class="exp-body">Providing technical support and infrastructure maintenance at Nile RCC — while running
+            active freelance frontend projects in parallel. Clients include real estate companies, shipping platforms,
+            and marketing agencies, handled solo from scoping through deployment.</p>
         </div>
       </div>
 
@@ -618,18 +625,6 @@
           <h3 class="exp-role">Frontend Developer</h3>
           <p class="exp-body">Built and maintained web interfaces using HTML, CSS/SCSS, JavaScript, jQuery, Vue.js, and
             Bootstrap. Collaborated on Laravel-backed projects and handled production deployments.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-meta">
-          <p class="exp-period">2021 — Present</p>
-          <p class="exp-company">Freelance</p>
-        </div>
-        <div>
-          <h3 class="exp-role">Freelance Frontend Developer</h3>
-          <p class="exp-body">Building client websites, custom components, and small product UIs independently — from
-            scoping through to delivery and handoff.</p>
         </div>
       </div>
     </div>
