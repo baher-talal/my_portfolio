@@ -74,6 +74,11 @@ nav {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--line);
+  transition: filter .3s;
+}
+
+[data-theme="light"] .nav-logo img {
+  filter: invert(1);
 }
 
 .nav-links {
@@ -676,6 +681,19 @@ footer {
 
   .hero-content ul {
     grid-template-columns: 1fr;
+  }
+
+  .hero-cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   #skills .skill-layout {

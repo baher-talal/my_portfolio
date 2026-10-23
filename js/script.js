@@ -6,8 +6,11 @@ const root = document.documentElement;
 
 function applyTheme(theme) {
   root.setAttribute('data-theme', theme);
-  const icon = toggle.querySelector('i');
-  icon.className = theme === 'dark' ? 'fas fa-moon' : 'far fa-moon';
+  const icon = window.FontAwesome.icon({
+    prefix: theme === 'dark' ? 'fas' : 'far',
+    iconName: 'moon'
+  });
+  toggle.innerHTML = icon.html.join('');
   try { localStorage.setItem('portfolio-theme', theme); } catch(e) {}
 }
 
